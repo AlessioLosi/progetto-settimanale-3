@@ -121,6 +121,16 @@ console.log(deleteOne(myString, myBoolean))
 /* ESERCIZIO 6
   Crea una funzione chiamata "isThisAnEmail" che riceve una stringa come parametro e ritorna true se la stringa è un valido indirizzo email.
 */
+const myEmail='alessiolosi93@icloud.com'
+function isThisAnEmail(myEmail){
+  const testEmail=/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+  if (testEmail.test(myEmail)){
+    return true
+  }else{
+    return false
+  }
+}
+console.log(isThisAnEmail(myEmail));
 
 /* ESERCIZIO 7
   Scrivi una funzione chiamata "whatDayIsIt" che ritorna il giorno della settimana corrente.
@@ -164,11 +174,30 @@ console.log(whatDayIsIt());
 
 /* ESERCIZIO 9
   Scrivi una funzione chiamata "howManyDays" che riceve una data come parametro e ritorna il numero di giorni trascorsi da tale data.
-*/
+*/ 
+ let primoGiorno=new Date("2024-06-27");
+  let secondoGiorno=new Date();
+function howManyDays(primoGiorno,secondoGiorno){
+  let unGiorno=1000*60*60*24;
+  let differenza=Math.abs(secondoGiorno-primoGiorno);
+  let totale=Math.abs(differenza/unGiorno);
+  return totale
 
+}
+console.log(howManyDays(primoGiorno,secondoGiorno));
 /* ESERCIZIO 10
   Scrivi una funzione chiamata "isTodayMyBirthday" che deve ritornare true se oggi è il tuo compleanno, falso negli altri casi.
 */
+let mybirthday=28;
+let birthmonth=5;
+const oggi=dataAttuale.getDate();
+const mese=dataAttuale.getMonth();
+function isTodayMyBirthday(){
+  if (oggi===mybirthday && mese===birthmonth){
+    return true
+  }else{return false}
+}
+console.log(isTodayMyBirthday())
 
 // Arrays & Oggetti
 
@@ -270,7 +299,7 @@ const movies = [
     Type: 'movie',
     Poster:
       'https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_SX300.jpg',
-  },
+    },
   {
     Title: 'Avengers: Age of Ultron',
     Year: '2015',
@@ -292,11 +321,37 @@ const movies = [
   Scrivi una funzione chiamata "deleteProp" che riceve un oggetto e una stringa come parametri; deve ritornare l'oggetto fornito dopo aver eliminato
   in esso la proprietà chiamata come la stringa passata come secondo parametro.
 */
+const myString1={
+  album:'the tortured poets department',
+  artist:'T.S.',
+  year:'2024'
+}
+const album='';
+function deleteProp(myString1,album){
+  if(myString1.filter(item=> item.name===album)){
+    return myString1-item  }
+    else{return myString1}
+  
+
+}
 
 /* ESERCIZIO 12
   Scrivi una funzione chiamata "newestMovie" che trova il film più recente nell'array "movies" fornito.
 */
 
+const newestMovie = () => {
+  let result = { Year: 1900 }
+  movies.forEach((movies) => {
+    let currentYear = parseInt(movies.Year)
+    if (currentYear > result.Year) {
+      result = movies
+    }
+  })
+
+  return result
+}
+
+console.log('il film più recente è', newestMovie())
 /* ESERCIZIO 13
   Scrivi una funzione chiamata countMovies che ritorna il numero di film contenuti nell'array "movies" fornito.
 */
@@ -335,7 +390,12 @@ sumAllTheYears();
 /* ESERCIZIO 17
   Scrivi una funzione chiamata "searchByTitle" che riceve una stringa come parametro e ritorna i film nell'array "movies" fornito che la contengono nel titolo.
 */
+const searchByTitle= (title) => {
+	const titleMovie = movies.filter(item => item.Title == title);
+	console.log(titleMovie);
+};
 
+searchByTitle('Lord');
 /* ESERCIZIO 18
   Scrivi una funzione chiamata "searchAndDivide" che riceve una stringa come parametro e ritorna un oggetto contenente due array: "match" e "unmatch".
   "match" deve includere tutti i film dell'array "movies" fornito che contengono la stringa fornita all'interno del proprio titolo, mentre "unmatch" deve includere tutti i rimanenti.
@@ -344,7 +404,6 @@ sumAllTheYears();
 /* ESERCIZIO 19
   Scrivi una funzione chiamata "removeIndex" che riceve un numero come parametro e ritorna l'array "movies" fornito privo dell'elemento nella posizione ricevuta come parametro.
 */
-
 // DOM (nota: gli elementi che selezionerai non si trovano realmente nella pagina)
 
 /* ESERCIZIO 20
