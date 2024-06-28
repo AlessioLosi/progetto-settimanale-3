@@ -378,20 +378,29 @@ links.forEach(item=>{
 /* ESERCIZIO 24
   Scrivi una funzione per aggiungere un nuovo elemento alla lista non ordinata con id "myList".
 */
-function addElement(){
-const myList=document.getElementById('myList');
-const elementList=document.createElement('li');
-elementList.innerHTML='nuovo elemento';
-myList.appendChild(elementList);
-}
+let myList=document.getElementById('myList');
+let elementList=document.createElement('li')
+function addLi(){
+
+  elementList.innerText='nuovo elemento'
+  myList.appendChild(elementList);
+};
 
 /* ESERCIZIO 25
   Scrivi una funzione per svuotare la lista non ordinata con id "myList".
 */
+function svuotaLi(){
+  myList.innerText='';
+}
 
 /* ESERCIZIO 26
   Scrivi una funzione per aggiungere ad ogni tag <tr> la classe CSS "test"
 */
+const selectTr=document.querySelectorAll('tr');
+selectTr.forEach(item=>{
+  item.classList.add('test');
+})
+
 
 // [EXTRA] JS Avanzato
 
